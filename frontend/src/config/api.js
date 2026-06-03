@@ -4,7 +4,7 @@
  * Prod: set VITE_API_URL=https://your-api.com/api
  */
 export const API_BASE_URL =
-  import.meta.env.VITE_API_URL?.replace(/\/$/, '') || '/api';
+  import.meta.env.VITE_API_URL?.replace(/\/$/, '') || 'https://urlsnap-pydi.onrender.com';
 
 export const API_ORIGIN = API_BASE_URL.startsWith('http')
   ? API_BASE_URL.replace(/\/api$/, '')

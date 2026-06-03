@@ -34,6 +34,9 @@ export const AuthProvider = ({ children }) => {
     return data;
   };
 
+  // alias for register — used by SignupPage
+  const signup = register;
+
   useEffect(() => {
     const init = async () => {
       const token = localStorage.getItem('token');
@@ -55,7 +58,7 @@ export const AuthProvider = ({ children }) => {
   }, [logout]);
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, register, logout, isAuthenticated: !!user }}>
+    <AuthContext.Provider value={{ user, loading, login, register, signup, logout, isAuthenticated: !!user }}>
       {children}
     </AuthContext.Provider>
   );
