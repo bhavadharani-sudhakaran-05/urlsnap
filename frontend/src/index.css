@@ -1,0 +1,101 @@
+/* ── Fonts ─────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=DM+Sans:ital,wght@0,400..1000;1,400..1000&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --coral: #E8553E;
+    --coral-light: #F47B66;
+    --coral-dark: #C93D28;
+    
+    --amber: #F59E0B;
+    --amber-light: #FCD34D;
+    
+    --cream: #FDF6EC;
+    --cream-dark: #F5E8D0;
+    
+    --ink: #1C1612;
+    --ink-light: #3D3028;
+    
+    --muted: #8B7355;
+    --muted-light: #C4A882;
+    
+    --sage: #6B8F6E;
+    --sage-light: #A8C5AA;
+    
+    --white: #FFFFFF;
+    
+    --surface: #FBF2E8;
+    --surface-dark: #F0E4D0;
+    
+    --border: #E5D5BE;
+    --border-dark: #C8B49A;
+  }
+
+  html { @apply scroll-smooth; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    @apply antialiased bg-cream text-ink;
+    background-color: var(--cream);
+    color: var(--ink);
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Playfair Display', Georgia, serif;
+    @apply tracking-tight;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'DM Mono', monospace;
+  }
+
+  * { @apply box-border; }
+
+  ::selection {
+    background-color: rgba(232, 85, 62, 0.2);
+    @apply text-coral-dark;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar        { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track  { background: transparent; }
+  ::-webkit-scrollbar-thumb  { @apply rounded-full bg-border-dark; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-muted-light; }
+}
+
+@layer components {
+  /* Common component classes can go here if needed, but the user spec asks for inline/custom styled components mostly */
+  
+  .skeleton {
+    @apply animate-pulse rounded-md bg-surface-dark;
+  }
+}
+
+/* ── Utility Animations ─────────────────────────────────── */
+.animate-fade-up     { animation: fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-in     { animation: fade-in 0.4s ease-out both; }
+.animate-scale-in    { animation: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+/* Stagger delays */
+.delay-0  { animation-delay: 0ms; }
+.delay-75 { animation-delay: 75ms; }
+.delay-150{ animation-delay: 150ms; }
+.delay-300{ animation-delay: 300ms; }
+
+/* ── Recharts custom ─────────────────────────────────────── */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: var(--ink) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  box-shadow: 0 4px 12px rgba(28,22,18,0.3) !important;
+  padding: 10px 14px !important;
+  font-family: 'DM Sans', sans-serif !important;
+}
+.recharts-tooltip-label { color: rgba(255,255,255,0.6) !important; font-size: 12px !important; margin-bottom: 4px !important; }
+.recharts-tooltip-item  { color: var(--white) !important; font-weight: 700 !important; font-size: 16px !important; }
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line { stroke: var(--border) !important; }
