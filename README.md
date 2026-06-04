@@ -276,14 +276,24 @@ See [docs/AI_PLANNING.md](docs/AI_PLANNING.md) for architecture decisions, phase
 ---
 
 ## 11. Screenshots
+<img width="1896" height="1098" alt="image" src="https://github.com/user-attachments/assets/0ddb752d-39a2-4d9b-8ba1-69c2759040ee" />
 
-| Page | Path |
-|------|------|
-| Dashboard | `docs/screenshots/dashboard-placeholder.png` |
-| Analytics | `docs/screenshots/analytics-placeholder.png` |
-| Create URL | `docs/screenshots/create-placeholder.png` |
+<img width="1899" height="886" alt="image" src="https://github.com/user-attachments/assets/ca2337e6-e492-483d-b68f-bcf6d328b635" />
 
-> Add your screenshots to `docs/screenshots/` after running the app.
+<img width="913" height="833" alt="image" src="https://github.com/user-attachments/assets/89b86042-1308-43cc-9169-51b4c5b0dcbd" />
+
+<img width="1894" height="1306" alt="image" src="https://github.com/user-attachments/assets/089d30aa-4341-45ce-935f-b0388a017c8b" />
+
+<img width="896" height="815" alt="image" src="https://github.com/user-attachments/assets/2353a6e5-9b99-4ae1-9821-9b037768cd1e" />
+
+<img width="1894" height="877" alt="image" src="https://github.com/user-attachments/assets/d2f4f909-92b5-4cd2-a467-207fb7c7ae50" />
+
+<img width="982" height="819" alt="image" src="https://github.com/user-attachments/assets/a05d28eb-930f-4446-afdc-50abbe07fd0e" />
+
+<img width="980" height="826" alt="image" src="https://github.com/user-attachments/assets/dd4b05e5-d47c-405a-959a-9253a7e46ac1" />
+
+<img width="1896" height="1879" alt="image" src="https://github.com/user-attachments/assets/f6f6ca8a-275c-48f4-9051-f23b780a9ca4" />
+
 
 ---
 
