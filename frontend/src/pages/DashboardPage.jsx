@@ -30,6 +30,18 @@ import { useAuth } from '../context/AuthContext';
 import { useUrls } from '../hooks/useUrls';
 import { useAnalytics } from '../hooks/useAnalytics';
 
+const useMediaQuery = (query) => {
+  const [matches, setMatches] = useState(false);
+  useEffect(() => {
+    const media = window.matchMedia(query);
+    if (media.matches !== matches) setMatches(media.matches);
+    const listener = () => setMatches(media.matches);
+    media.addEventListener('change', listener);
+    return () => media.removeEventListener('change', listener);
+  }, [matches, query]);
+  return matches;
+};
+
 import AppLayout from '../components/AppLayout';
 import StatCard from '../components/StatCard';
 import UrlTable from '../components/UrlTable';
@@ -39,6 +51,7 @@ export default function DashboardPage() {
   const { user } = useAuth();
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
+  const isMobile = useMediaQuery('(max-width: 768px)');
   
   // Modals state
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -256,43 +269,45 @@ export default function DashboardPage() {
             </div>
 
             {/* URL LIST */}
-            <div className="hidden md:block">
-              <UrlTable 
-                urls={urls} 
-                loading={loading}
-                onEdit={(url) => { setSelectedUrl(url); setShowEditModal(true); }}
-                onDelete={(url) => { setSelectedUrl(url); setShowDeleteModal(true); }}
-                onQR={(url) => { setSelectedUrl(url); setShowQRModal(true); }}
-                onAnalytics={(url) => navigate(`/analytics/${url._id}`)}
-                onCreateNew={() => setShowCreateModal(true)}
-                onCopy={copyToClipboard}
-              />
-            </div>
-            
-            <div className="block md:hidden">
-              {loading ? (
-                // Simple skeletons for mobile
-                Array.from({ length: 3 }).map((_, i) => (
-                  <div key={i} className="bg-white border-[1.5px] border-border rounded-[16px] p-[18px] mb-3 h-[180px] skeleton" />
-                ))
-              ) : urls.length === 0 ? (
-                <div className="bg-white border-[1.5px] border-border rounded-[16px] p-8 text-center">
-                  <h3 className="font-display text-[20px] font-bold text-ink">No links found</h3>
-                </div>
-              ) : (
-                urls.map(url => (
-                  <UrlCard 
-                    key={url._id} 
-                    url={url}
-                    onEdit={(url) => { setSelectedUrl(url); setShowEditModal(true); }}
-                    onDelete={(url) => { setSelectedUrl(url); setShowDeleteModal(true); }}
-                    onQR={(url) => { setSelectedUrl(url); setShowQRModal(true); }}
-                    onAnalytics={(url) => navigate(`/analytics/${url._id}`)}
-                    onCopy={copyToClipboard}
-                  />
-                ))
-              )}
-            </div>
+            {!isMobile ? (
+              <div className="md:block">
+                <UrlTable 
+                  urls={urls} 
+                  loading={loading}
+                  onEdit={(url) => { setSelectedUrl(url); setShowEditModal(true); }}
+                  onDelete={(url) => { setSelectedUrl(url); setShowDeleteModal(true); }}
+                  onQR={(url) => { setSelectedUrl(url); setShowQRModal(true); }}
+                  onAnalytics={(url) => navigate(`/analytics/${url._id}`)}
+                  onCreateNew={() => setShowCreateModal(true)}
+                  onCopy={copyToClipboard}
+                />
+              </div>
+            ) : (
+              <div className="block">
+                {loading ? (
+                  // Simple skeletons for mobile
+                  Array.from({ length: 3 }).map((_, i) => (
+                    <div key={i} className="bg-white border-[1.5px] border-border rounded-[16px] p-[18px] mb-3 h-[180px] skeleton" />
+                  ))
+                ) : urls.length === 0 ? (
+                  <div className="bg-white border-[1.5px] border-border rounded-[16px] p-8 text-center">
+                    <h3 className="font-display text-[20px] font-bold text-ink">No links found</h3>
+                  </div>
+                ) : (
+                  urls.map(url => (
+                    <UrlCard 
+                      key={url._id} 
+                      url={url}
+                      onEdit={(url) => { setSelectedUrl(url); setShowEditModal(true); }}
+                      onDelete={(url) => { setSelectedUrl(url); setShowDeleteModal(true); }}
+                      onQR={(url) => { setSelectedUrl(url); setShowQRModal(true); }}
+                      onAnalytics={(url) => navigate(`/analytics/${url._id}`)}
+                      onCopy={copyToClipboard}
+                    />
+                  ))
+                )}
+              </div>
+            )}
 
             {/* PAGINATION */}
             {pagination.pages > 1 && (

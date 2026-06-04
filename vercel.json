@@ -1,6 +1,17 @@
 {
   "rewrites": [
-    { "source": "/:shortCode", "destination": "https://urlsnap-pydi.onrender.com/:shortCode" },
+    {
+      "source": "/(login|register|dashboard|settings|qr-generator|expired)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/analytics/(.*)",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/([a-zA-Z0-9_-]{3,32})",
+      "destination": "https://urlsnap-pydi.onrender.com/$1"
+    },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "env": {
