@@ -1,5 +1,6 @@
 {
   "rewrites": [
-    { "source": "/:shortCode", "destination": "https://urlsnap-pydi.onrender.com/:shortCode" }
+    { "source": "/:shortCode", "destination": "https://urlsnap-pydi.onrender.com/:shortCode" },
+    { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
