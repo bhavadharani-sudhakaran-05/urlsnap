@@ -132,13 +132,27 @@ export default function Home() {
           <span className="text-lg font-bold tracking-tight text-white">Zestlink</span>
         </Link>
         
-        <div className="hidden items-center gap-8 md:flex">
-          {['Features', 'Developers', 'Pricing'].map((label) => (
-            <a key={label} href={`#${label.toLowerCase()}`}
-               className="text-sm font-medium text-zinc-400 hover:text-white transition-colors">
-               {label}
-            </a>
-          ))}
+        <div className="hidden items-center gap-6 md:flex">
+          <div className="group relative">
+            <button className="text-sm font-medium text-zinc-400 hover:text-white transition-colors py-2 flex items-center gap-1">
+              Product <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div className="absolute top-full left-0 hidden group-hover:flex flex-col bg-[#0A0A0A] border border-zinc-800 rounded-lg p-2 min-w-[150px] shadow-xl">
+              {['Features', 'Analytics', 'API', 'Pricing'].map(l => (
+                <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 px-3 py-2 rounded-md transition-colors">{l}</a>
+              ))}
+            </div>
+          </div>
+          <div className="group relative">
+            <button className="text-sm font-medium text-zinc-400 hover:text-white transition-colors py-2 flex items-center gap-1">
+              Company <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div className="absolute top-full left-0 hidden group-hover:flex flex-col bg-[#0A0A0A] border border-zinc-800 rounded-lg p-2 min-w-[150px] shadow-xl">
+              {['About', 'Blog', 'Careers', 'Contact'].map(l => (
+                <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 px-3 py-2 rounded-md transition-colors">{l}</a>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="flex items-center gap-4">
@@ -201,100 +215,11 @@ export default function Home() {
             </Link>
           </motion.div>
 
-          {/* High-Fidelity Dashboard Mockup */}
-          <motion.div 
-            initial={{ opacity: 0, y: 40 }} 
-            animate={{ opacity: 1, y: 0 }} 
-            transition={{ delay: 0.5, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative mt-24 w-full max-w-6xl"
-          >
-            <div className="absolute inset-0 -top-8 rounded-[2rem] bg-coral/10 blur-[80px]" />
-            <div className="relative rounded-xl border border-zinc-800 bg-[#0A0A0A] shadow-[0_0_80px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col ring-1 ring-white/5">
-              
-              {/* Window Controls */}
-              <div className="flex items-center px-4 py-3 border-b border-zinc-800 bg-[#111]">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-zinc-800" />
-                  <div className="w-3 h-3 rounded-full bg-zinc-800" />
-                  <div className="w-3 h-3 rounded-full bg-zinc-800" />
-                </div>
-                <div className="mx-auto flex h-7 items-center justify-center rounded-md bg-zinc-900 px-3 text-[12px] font-mono text-zinc-500 border border-zinc-800">
-                  <svg className="w-3 h-3 mr-2 opacity-60" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" /></svg>
-                  app.zestlink.com
-                </div>
-                <div className="w-10"></div> {/* Spacer for alignment */}
-              </div>
 
-              {/* Application UI Mock */}
-              <div className="p-6 md:p-8 flex gap-8 h-[400px] text-left">
-                {/* Sidebar mock */}
-                <div className="hidden md:flex flex-col w-48 gap-2">
-                  <div className="h-8 w-full rounded bg-zinc-800/50" />
-                  <div className="h-8 w-3/4 rounded bg-zinc-900" />
-                  <div className="h-8 w-5/6 rounded bg-zinc-900" />
-                  <div className="h-8 w-full rounded bg-zinc-900 mt-8" />
-                  <div className="h-8 w-2/3 rounded bg-zinc-900" />
-                </div>
-                
-                {/* Main Content mock */}
-                <div className="flex-1 flex flex-col gap-6">
-                  <div className="flex justify-between items-center pb-4 border-b border-zinc-800">
-                    <div className="h-6 w-32 rounded bg-zinc-700" />
-                    <div className="h-8 w-24 rounded bg-zinc-200" />
-                  </div>
-                  
-                  {/* Grid of metrics */}
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                    {[1, 2, 3, 4].map(i => (
-                      <div key={i} className="rounded-lg border border-zinc-800 bg-[#111] p-4 flex flex-col gap-3">
-                        <div className="h-4 w-16 rounded bg-zinc-800" />
-                        <div className="h-8 w-24 rounded bg-zinc-700" />
-                      </div>
-                    ))}
-                  </div>
-                  
-                  {/* Chart Line Mock */}
-                  <div className="flex-1 border border-zinc-800 rounded-lg bg-[#111] p-4 relative overflow-hidden flex items-end">
-                    <svg className="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-                      <motion.path 
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        whileInView={{ pathLength: 1, opacity: 1 }}
-                        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.8 }}
-                        viewport={{ once: true }}
-                        d="M0 80 Q 20 60, 40 70 T 80 40 T 100 20 L 100 100 L 0 100 Z" 
-                        fill="rgba(232,85,62,0.15)" 
-                      />
-                      <motion.path 
-                        initial={{ pathLength: 0, opacity: 0 }}
-                        whileInView={{ pathLength: 1, opacity: 1 }}
-                        transition={{ duration: 1.5, ease: "easeInOut", delay: 0.8 }}
-                        viewport={{ once: true }}
-                        d="M0 80 Q 20 60, 40 70 T 80 40 T 100 20" 
-                        fill="none" 
-                        stroke="#e8553e" 
-                        strokeWidth="2" 
-                        vectorEffect="non-scaling-stroke"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
         </motion.div>
       </section>
 
-      {/* Trust Section */}
-      <section className="relative z-10 border-y border-zinc-900 bg-[#050505] py-16 mt-20">
-        <div className="mx-auto max-w-5xl px-6 text-center">
-          <p className="text-sm font-medium text-zinc-500 mb-8 uppercase tracking-widest">Trusted by innovative teams worldwide</p>
-          <div className="flex flex-wrap justify-center items-center gap-10 md:gap-20 opacity-50 grayscale mix-blend-screen">
-            {['ACME Corp', 'Quantum', 'Nebula', 'Echo', 'Vertex'].map(brand => (
-              <span key={brand} className="text-xl font-bold tracking-tighter text-zinc-300 font-display">{brand}</span>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Features - Sleek Bento */}
       <section id="features" className="relative z-10 py-32 bg-[#0A0A0A]">
