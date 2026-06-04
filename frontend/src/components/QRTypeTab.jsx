@@ -2,7 +2,7 @@
    Horizontal tab bar for selecting QR content type.
 */
 import React from 'react';
-import { LucideIcon } from 'lucide-react'; // assuming lucide-react is installed
+
 
 const TABS = [
   { id: 'url',       label: 'URL',        icon: '🔗' },
