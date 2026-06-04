@@ -286,9 +286,8 @@ See [docs/AI_PLANNING.md](docs/AI_PLANNING.md) for architecture decisions, phase
 
 ## 12. Demo Video
 
-- **Loom:** [Demo video](https://www.loom.com/share/f4e03fee67974e339233fe3a07df4cc9)
-- **YouTube:** [YouTube demo link](#)
-
+- **Loom:** [Add your Loom demo link here]
+- **YouTube:** [Add your YouTube demo link here]
 
 ---
 
