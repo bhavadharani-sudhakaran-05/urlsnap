@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
 import crypto from 'crypto';
+import nodemailer from 'nodemailer';
 
 const signToken = (id) =>
   jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -71,14 +72,39 @@ export const forgotPassword = async (req, res, next) => {
     const resetToken = user.createPasswordResetToken();
     await user.save({ validateBeforeSave: false });
 
-    // Without SMTP, we log to console and return the URL
     const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
     const resetUrl = `${clientUrl}/reset-password/${resetToken}`;
+
+    // Set up nodemailer transport
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: Number(process.env.SMTP_PORT),
+      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
+      },
+    });
+
+    // Send reset email
+    try {
+      await transporter.sendMail({
+        from: process.env.SMTP_USER,
+        to: user.email,
+        subject: 'Password Reset Request',
+        text: `You requested a password reset. Click the link to reset your password: ${resetUrl}`,
+        html: `<p>You requested a password reset.</p><p><a href="${resetUrl}">Reset Password</a></p>`,
+      });
+    } catch (emailErr) {
+      console.error('Error sending password reset email:', emailErr);
+      // Continue – we still return the reset URL for debugging
+    }
+
     console.log('Password Reset URL:', resetUrl);
 
     res.status(200).json({
       success: true,
-      message: 'Token generated successfully. Check server console for reset link.',
+      message: 'Password reset email sent (or logged).',
       resetUrl,
     });
   } catch (err) {
