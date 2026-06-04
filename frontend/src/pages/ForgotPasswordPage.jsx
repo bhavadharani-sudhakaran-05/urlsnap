@@ -25,6 +25,7 @@ export default function ForgotPasswordPage() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [resetUrl, setResetUrl] = useState('');
   const [shake, setShake] = useState(0);
 
   const handleSubmit = async (e) => {
@@ -41,7 +42,10 @@ export default function ForgotPasswordPage() {
     try {
       const data = await forgotPassword(email);
       setSuccess(true);
-      toast.success(data.message || 'Reset link sent!', {
+      if (data.resetUrl) {
+        setResetUrl(data.resetUrl);
+      }
+      toast.success(data.message || 'Reset link generated!', {
         style: { fontFamily: "'DM Sans', sans-serif" }
       });
     } catch (err) {
@@ -249,11 +253,34 @@ export default function ForgotPasswordPage() {
               <div style={{ width: '64px', height: '64px', backgroundColor: 'var(--sage, #6B8F6E)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', color: 'white' }}>
                 <CheckCircle size={32} />
               </div>
-              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '24px', color: 'var(--ink, #1C1612)', margin: '0 0 12px 0' }}>Check your email</h3>
+              <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '24px', color: 'var(--ink, #1C1612)', margin: '0 0 12px 0' }}>Ready to reset</h3>
               <p style={{ fontSize: '15px', color: 'var(--muted, #8B7355)', lineHeight: 1.6, margin: '0 0 32px 0' }}>
-                We've sent password reset instructions to<br />
+                A secure reset link has been generated for<br />
                 <strong style={{ color: 'var(--ink, #1C1612)' }}>{email}</strong>
               </p>
+              
+              {resetUrl && (
+                <a
+                  href={resetUrl}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '14px 24px',
+                    backgroundColor: 'var(--coral, #E8553E)',
+                    color: 'var(--white, #FFFFFF)',
+                    textDecoration: 'none',
+                    borderRadius: '10px',
+                    fontFamily: "'DM Sans', sans-serif",
+                    fontSize: '15px',
+                    fontWeight: 700,
+                    letterSpacing: '0.3px',
+                    boxShadow: '0 8px 24px rgba(232,85,62,0.28)',
+                  }}
+                >
+                  Proceed to Reset Password →
+                </a>
+              )}
             </motion.div>
           )}
 

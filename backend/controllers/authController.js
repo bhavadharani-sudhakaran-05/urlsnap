@@ -96,38 +96,11 @@ export const forgotPassword = async (req, res, next) => {
     const clientUrl = process.env.CLIENT_URL || 'http://localhost:5173';
     const resetUrl = `${clientUrl}/reset-password/${resetToken}`;
 
-    // Set up nodemailer transport
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: Number(process.env.SMTP_PORT),
-      secure: process.env.SMTP_SECURE === 'true', // true for 465, false for other ports
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-      connectionTimeout: 10000,
-      socketTimeout: 10000,
-    });
-
-    // Send reset email
-    try {
-      await transporter.sendMail({
-        from: process.env.SMTP_USER,
-        to: user.email,
-        subject: 'Password Reset Request',
-        text: `You requested a password reset. Click the link to reset your password: ${resetUrl}`,
-        html: `<p>You requested a password reset.</p><p><a href="${resetUrl}">Reset Password</a></p>`,
-      });
-    } catch (emailErr) {
-      console.error('Error sending password reset email:', emailErr);
-      // Continue – we still return the reset URL for debugging
-    }
-
     console.log('Password Reset URL:', resetUrl);
 
     res.status(200).json({
       success: true,
-      message: 'Password reset email sent (or logged).',
+      message: 'Password reset link generated successfully.',
       resetUrl,
     });
   } catch (err) {
