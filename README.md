@@ -52,18 +52,18 @@ A full-stack URL shortening platform with JWT authentication, click analytics, Q
 ```mermaid
 flowchart TB
     subgraph Client["React Frontend (Vite)"]
-        Pages[Pages: Login, Dashboard, Analytics]
-        Ctx[Auth & Toast Context]
-        API[Axios API Layer]
+        Pages["Pages: Login, Dashboard, Analytics"]
+        Ctx["Auth & Toast Context"]
+        API["Axios API Layer"]
     end
 
     subgraph Server["Node.js / Express"]
-        AuthR[/api/auth]
-        UrlR[/api/url]
-        AnR[/api/analytics]
-        PubR[/api/public]
-        Redir[GET /:shortCode]
-        MW[Helmet · CORS · Rate Limit · JWT]
+        AuthR["/api/auth"]
+        UrlR["/api/url"]
+        AnR["/api/analytics"]
+        PubR["/api/public"]
+        Redir["GET /:shortCode"]
+        MW["Helmet • CORS • Rate Limit • JWT"]
     end
 
     subgraph DB["MongoDB"]
@@ -73,7 +73,10 @@ flowchart TB
     end
 
     Pages --> Ctx --> API
-    API --> MW --> AuthR & UrlR & AnR & PubR
+    API --> MW --> AuthR
+    API --> MW --> UrlR
+    API --> MW --> AnR
+    API --> MW --> PubR
     Redir --> VisitM
     Redir --> UrlM
     AuthR --> UserM
