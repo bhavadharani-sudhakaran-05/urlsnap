@@ -36,7 +36,7 @@ import {
   Bot
 } from 'lucide-react';
 import QRCode from 'react-qr-code';
-import { getAnalytics } from '../api/analyticsApi';
+import { getAnalytics } from '../utils/api';
 import { formatDateTime, formatDate } from '../utils/formatDate';
 import { getApiError } from '../utils/getApiError';
 import ErrorState from '../components/ErrorState';

@@ -114,6 +114,11 @@ export const getAnalytics = async (id, period) => {
   };
 };
 
+export const getPublicStats = async (shortCode) => {
+  const { data } = await api.get(`/public/stats/${shortCode}`);
+  return data;
+};
+
 // --- Mocked Endpoints for UI ---
 // These are required by the dashboard UI but don't exist in the backend yet
 export const getOverview = async () => {
