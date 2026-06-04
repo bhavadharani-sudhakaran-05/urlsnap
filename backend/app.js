@@ -59,6 +59,10 @@ app.use(express.json({ limit: '2mb' }));
 app.use(express.urlencoded({ extended: true }));
 app.use(mongoSanitize());
 
+app.get("/health", (req, res) => {
+  res.send("OK");
+});
+
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'URL Shortener API is running' });
 });
