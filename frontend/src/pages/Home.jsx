@@ -262,16 +262,163 @@ export default function Home() {
       </section>
 
       {/* Additional Sections */}
-      {['Analytics', 'API', 'About', 'Blog', 'Careers', 'Contact'].map(section => (
-        <section key={section} id={section.toLowerCase()} className="relative z-10 py-24 bg-[#0A0A0A] border-t border-zinc-900">
-          <div className="mx-auto max-w-6xl px-6 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-white mb-6">{section}</h2>
-            <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-              We are currently working hard on this section. Check back soon for updates!
-            </p>
+      {/* Analytics Section */}
+      <section id="analytics" className="relative z-10 py-32 bg-[#050505] border-t border-zinc-900">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="flex flex-col md:flex-row items-center gap-16">
+            <div className="flex-1">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-6">Actionable insights,<br />in real time.</h2>
+              <p className="text-lg text-zinc-400 mb-8 max-w-md">Gain profound visibility into your audience. Track clicks, geographic locations, and referring channels the second they happen.</p>
+              <div className="grid grid-cols-2 gap-6">
+                <div>
+                  <h4 className="text-3xl font-extrabold text-coral mb-1">99.9%</h4>
+                  <p className="text-sm font-medium text-zinc-500">Uptime SLA</p>
+                </div>
+                <div>
+                  <h4 className="text-3xl font-extrabold text-white mb-1">50M+</h4>
+                  <p className="text-sm font-medium text-zinc-500">Links tracked daily</p>
+                </div>
+              </div>
+            </div>
+            <div className="flex-1 w-full">
+              <div className="rounded-2xl border border-zinc-800 bg-[#0A0A0A] p-6 shadow-2xl">
+                <div className="flex items-center justify-between mb-6 border-b border-zinc-800 pb-4">
+                  <h5 className="text-sm font-semibold text-white">Live Traffic</h5>
+                  <span className="flex h-2 w-2 relative">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                  </span>
+                </div>
+                <div className="space-y-4">
+                  {[...Array(4)].map((_, i) => (
+                    <div key={i} className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-xs font-medium text-white">
+                          {['US', 'UK', 'IN', 'AU'][i]}
+                        </div>
+                        <div className="w-24 h-2 rounded bg-zinc-800" />
+                      </div>
+                      <div className="w-12 h-2 rounded bg-zinc-700" />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
-      ))}
+        </div>
+      </section>
+
+      {/* API Section */}
+      <section id="api" className="relative z-10 py-32 bg-[#0A0A0A] border-t border-zinc-900 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-coral/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="mx-auto max-w-4xl px-6 text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-6">Developer-first API</h2>
+          <p className="text-lg text-zinc-400 mb-12 max-w-2xl mx-auto">Integrate link shortening and analytics seamlessly into your applications with our robust, RESTful API and comprehensive webhooks.</p>
+          <div className="text-left rounded-xl border border-zinc-800 bg-[#111] overflow-hidden shadow-2xl max-w-2xl mx-auto">
+            <div className="flex items-center gap-2 px-4 py-3 border-b border-zinc-800 bg-black/50">
+              <div className="w-3 h-3 rounded-full bg-zinc-700" />
+              <div className="w-3 h-3 rounded-full bg-zinc-700" />
+              <div className="w-3 h-3 rounded-full bg-zinc-700" />
+              <span className="ml-4 text-xs font-mono text-zinc-500">POST /v1/links</span>
+            </div>
+            <div className="p-6 font-mono text-sm">
+              <p className="text-zinc-500">// Create a new shortened link</p>
+              <div className="mt-2">
+                <span className="text-coral">const</span> <span className="text-white">response = </span> <span className="text-coral">await</span> <span className="text-blue-400">fetch</span><span className="text-white">('https://api.zestlink.com/v1/links', {'{'}</span>
+              </div>
+              <div className="pl-4">
+                <p className="text-white">method: <span className="text-green-400">'POST'</span>,</p>
+                <p className="text-white">headers: {'{'} <span className="text-green-400">'Authorization'</span>: <span className="text-green-400">'Bearer API_KEY'</span> {'}'},</p>
+                <p className="text-white">body: <span className="text-blue-400">JSON</span>.stringify({'{'} url: <span className="text-green-400">'https://example.com'</span> {'}'})</p>
+              </div>
+              <p className="text-white">{'}'});</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section id="about" className="relative z-10 py-32 bg-[#050505] border-t border-zinc-900">
+        <div className="mx-auto max-w-6xl px-6 text-center">
+          <p className="text-coral font-semibold tracking-wider text-sm uppercase mb-4">About Us</p>
+          <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-8">Building the connective<br/>tissue of the internet.</h2>
+          <p className="text-lg text-zinc-400 max-w-3xl mx-auto leading-relaxed">
+            Zestlink was founded on a simple principle: every interaction matters. We're a globally distributed team of engineers, designers, and thinkers dedicated to making link management powerful, scalable, and intuitive.
+          </p>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section id="blog" className="relative z-10 py-32 bg-[#0A0A0A] border-t border-zinc-900">
+        <div className="mx-auto max-w-6xl px-6">
+          <div className="flex items-end justify-between mb-12">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-white mb-4">Latest Insights</h2>
+              <p className="text-zinc-400">Updates, engineering logs, and product news.</p>
+            </div>
+            <a href="#" className="hidden md:inline-flex items-center text-sm font-medium text-coral hover:text-coral-dark transition-colors">View all posts &rarr;</a>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              { title: "Scaling our analytics engine to 10k RPS", date: "Oct 12, 2026", category: "Engineering" },
+              { title: "Introducing custom domains for all plans", date: "Sep 28, 2026", category: "Product" },
+              { title: "The future of attribution tracking", date: "Sep 15, 2026", category: "Marketing" }
+            ].map(post => (
+              <a key={post.title} href="#" className="group block">
+                <div className="aspect-video w-full rounded-xl bg-zinc-900 border border-zinc-800 mb-4 overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 flex items-center justify-center text-zinc-700 font-bold opacity-30">Image Placeholder</div>
+                </div>
+                <p className="text-xs font-semibold text-coral uppercase tracking-wider mb-2">{post.category} &bull; {post.date}</p>
+                <h3 className="text-xl font-bold text-white group-hover:text-zinc-300 transition-colors">{post.title}</h3>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Careers Section */}
+      <section id="careers" className="relative z-10 py-32 bg-[#050505] border-t border-zinc-900">
+        <div className="mx-auto max-w-4xl px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold tracking-tighter text-white mb-4">Join our mission</h2>
+            <p className="text-lg text-zinc-400">We're always looking for talented individuals to join our fully remote team.</p>
+          </div>
+          <div className="space-y-4">
+            {[
+              { role: "Senior Frontend Engineer", team: "Engineering", location: "Remote (Americas)" },
+              { role: "Backend Systems Engineer", team: "Infrastructure", location: "Remote (Global)" },
+              { role: "Product Marketing Manager", team: "Marketing", location: "Remote (EMEA)" }
+            ].map(job => (
+              <a key={job.role} href="#" className="flex flex-col sm:flex-row sm:items-center justify-between p-6 rounded-xl border border-zinc-800 bg-[#0A0A0A] hover:bg-zinc-900/80 transition-colors group">
+                <div>
+                  <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-coral transition-colors">{job.role}</h3>
+                  <p className="text-sm text-zinc-500">{job.team} &bull; {job.location}</p>
+                </div>
+                <div className="mt-4 sm:mt-0 text-sm font-medium text-white flex items-center gap-2">
+                  Apply <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" className="relative z-10 py-32 bg-[#0A0A0A] border-t border-zinc-900">
+        <div className="mx-auto max-w-3xl px-6 text-center">
+          <h2 className="text-4xl font-bold tracking-tighter text-white mb-6">Get in touch</h2>
+          <p className="text-lg text-zinc-400 mb-10 max-w-xl mx-auto">Have questions about our enterprise plans, custom integrations, or just want to say hi? We'd love to hear from you.</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <a href="mailto:hello@zestlink.com" className="inline-flex items-center justify-center rounded-lg bg-white px-8 py-4 text-sm font-bold text-black hover:bg-zinc-200 transition-colors">
+              Contact Sales
+            </a>
+            <a href="#" className="inline-flex items-center justify-center rounded-lg border border-zinc-700 bg-transparent px-8 py-4 text-sm font-bold text-white hover:bg-zinc-900 transition-colors">
+              Visit Help Center
+            </a>
+          </div>
+        </div>
+      </section>
 
       {/* Footer */}
       <footer className="relative z-20 border-t border-zinc-900 bg-[#0A0A0A] pt-16 pb-8">
