@@ -368,7 +368,7 @@ export default function Home() {
           </div>
           
           <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-zinc-600">© 2026 Zestlink Inc. All rights reserved.</p>
+            <p className="text-xs text-zinc-600">© 2026 Zestlink Inc. Powered by katomaran. All rights reserved.</p>
             <div className="flex items-center gap-6">
               {['Privacy Policy', 'Terms of Service', 'Cookie Settings'].map(l => (
                 <a key={l} href="#" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">{l}</a>

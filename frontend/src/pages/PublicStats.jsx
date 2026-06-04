@@ -141,7 +141,7 @@ export default function PublicStats() {
               <Link to="/login" className="font-semibold text-brand-600 hover:text-brand-700 transition-colors">
                 Zestlink
               </Link>
-              {' '}· Secure URL shortener
+              {' '}· Secure URL shortener by katomaran
             </p>
           </div>
         </div>
