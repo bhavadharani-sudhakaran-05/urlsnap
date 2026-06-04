@@ -139,7 +139,7 @@ export default function Home() {
             </button>
             <div className="absolute top-full left-0 hidden group-hover:flex flex-col bg-[#0A0A0A] border border-zinc-800 rounded-lg p-2 min-w-[150px] shadow-xl">
               {['Features', 'Analytics', 'API'].map(l => (
-                <Link key={l} to={`/${l.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 px-3 py-2 rounded-md transition-colors">{l}</Link>
+                <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 px-3 py-2 rounded-md transition-colors">{l}</a>
               ))}
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function Home() {
             </button>
             <div className="absolute top-full left-0 hidden group-hover:flex flex-col bg-[#0A0A0A] border border-zinc-800 rounded-lg p-2 min-w-[150px] shadow-xl">
               {['About', 'Blog', 'Careers', 'Contact'].map(l => (
-                <Link key={l} to={`/${l.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 px-3 py-2 rounded-md transition-colors">{l}</Link>
+                <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 px-3 py-2 rounded-md transition-colors">{l}</a>
               ))}
             </div>
           </div>
@@ -261,6 +261,18 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Additional Sections */}
+      {['Analytics', 'API', 'About', 'Blog', 'Careers', 'Contact'].map(section => (
+        <section key={section} id={section.toLowerCase()} className="relative z-10 py-24 bg-[#0A0A0A] border-t border-zinc-900">
+          <div className="mx-auto max-w-6xl px-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-white mb-6">{section}</h2>
+            <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
+              We are currently working hard on this section. Check back soon for updates!
+            </p>
+          </div>
+        </section>
+      ))}
+
       {/* Footer */}
       <footer className="relative z-20 border-t border-zinc-900 bg-[#0A0A0A] pt-16 pb-8">
         <div className="mx-auto max-w-6xl px-6">
@@ -278,7 +290,7 @@ export default function Home() {
               <h4 className="text-sm font-semibold text-white mb-4">Product</h4>
               <ul className="space-y-3">
                 {['Features', 'Analytics', 'API'].map(l => (
-                  <li key={l}><Link to={`/${l.toLowerCase()}`} className="text-sm text-zinc-500 hover:text-white transition-colors">{l}</Link></li>
+                  <li key={l}><a href={`#${l.toLowerCase()}`} className="text-sm text-zinc-500 hover:text-white transition-colors">{l}</a></li>
                 ))}
               </ul>
             </div>
@@ -286,7 +298,7 @@ export default function Home() {
               <h4 className="text-sm font-semibold text-white mb-4">Company</h4>
               <ul className="space-y-3">
                 {['About', 'Blog', 'Careers', 'Contact'].map(l => (
-                  <li key={l}><Link to={`/${l.toLowerCase()}`} className="text-sm text-zinc-500 hover:text-white transition-colors">{l}</Link></li>
+                  <li key={l}><a href={`#${l.toLowerCase()}`} className="text-sm text-zinc-500 hover:text-white transition-colors">{l}</a></li>
                 ))}
               </ul>
             </div>
