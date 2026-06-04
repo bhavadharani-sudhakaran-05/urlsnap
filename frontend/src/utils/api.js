@@ -49,6 +49,16 @@ export const getMe = async () => {
   return data;
 };
 
+export const forgotPassword = async (email) => {
+  const { data } = await api.post('/auth/forgot-password', { email });
+  return data;
+};
+
+export const resetPassword = async (token, password) => {
+  const { data } = await api.post(`/auth/reset-password/${token}`, { password });
+  return data;
+};
+
 // --- URL Endpoints ---
 export const getUrls = async (params) => {
   // Backend uses /url/all which returns { success, count, data }

@@ -303,7 +303,7 @@ export default function LoginPage() {
                 <label style={{ display: 'block', fontSize: '12px', fontWeight: 600, color: 'var(--ink-light, #3D3028)', letterSpacing: '0.8px', textTransform: 'uppercase' }}>
                   Password
                 </label>
-                <button type="button" onClick={() => toast.error('Password reset is not enabled yet. Please contact support.', { icon: 'ℹ️' })} style={{ background: 'none', border: 'none', fontSize: '13px', color: 'var(--coral, #E8553E)', textDecoration: 'none', cursor: 'pointer', padding: 0 }}>Forgot password?</button>
+                <Link to="/forgot-password" style={{ fontSize: '13px', color: 'var(--coral, #E8553E)', textDecoration: 'none' }}>Forgot password?</Link>
               </div>
               <div style={{ position: 'relative' }}>
                 <div style={{ position: 'absolute', top: 0, bottom: 0, left: 0, width: '44px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--muted-light, #C4A882)', pointerEvents: 'none' }}>

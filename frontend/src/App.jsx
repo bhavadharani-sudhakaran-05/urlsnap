@@ -5,6 +5,8 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Home from './pages/Home';
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
+import ForgotPasswordPage from './pages/ForgotPasswordPage';
+import ResetPasswordPage from './pages/ResetPasswordPage';
 
 // New Pages
 import DashboardPage from './pages/DashboardPage';
@@ -58,6 +60,8 @@ export default function App() {
           </GuestOnly>
         }
       />
+      <Route path="/forgot-password" element={<GuestOnly><ForgotPasswordPage /></GuestOnly>} />
+      <Route path="/reset-password/:token" element={<GuestOnly><ResetPasswordPage /></GuestOnly>} />
       
       {/* Informational / Public Routes */}
       <Route path="/expired" element={<ExpiredPage />} />
