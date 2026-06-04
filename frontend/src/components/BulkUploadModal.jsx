@@ -22,7 +22,7 @@ export default function BulkUploadModal({ isOpen, onClose, onSuccess }) {
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'linksnap-bulk-template.csv';
+    link.download = 'zestlink-bulk-template.csv';
     link.click();
   };
 

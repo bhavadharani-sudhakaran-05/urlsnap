@@ -247,7 +247,7 @@ export default function SignupPage() {
               </h1>
               <div style={{ width: '60px', height: '1px', backgroundColor: 'rgba(255,255,255,0.1)', margin: '28px 0' }} />
               <p style={{ fontSize: '15px', fontWeight: 300, color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, maxWidth: '380px', margin: 0 }}>
-                LinkSnap turns your URLs into insights. Shorten, track, and understand every click — all in one beautiful dashboard.
+                Zestlink turns your URLs into insights. Shorten, track, and understand every click — all in one beautiful dashboard.
               </p>
             </div>
 
@@ -274,8 +274,8 @@ export default function SignupPage() {
 
             <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, overflow: 'hidden', padding: '12px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
               <div className="ticker-content" style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(255,255,255,0.2)' }}>
-                ↗ linksnap.io/go/product-launch &nbsp;&nbsp;&nbsp;&nbsp; ↗ linksnap.io/go/campaign-q4 &nbsp;&nbsp;&nbsp;&nbsp; ↗ linksnap.io/go/team-dashboard &nbsp;&nbsp;&nbsp;&nbsp;
-                ↗ linksnap.io/go/product-launch &nbsp;&nbsp;&nbsp;&nbsp; ↗ linksnap.io/go/campaign-q4 &nbsp;&nbsp;&nbsp;&nbsp; ↗ linksnap.io/go/team-dashboard
+                ↗ zestlink.io/go/product-launch &nbsp;&nbsp;&nbsp;&nbsp; ↗ zestlink.io/go/campaign-q4 &nbsp;&nbsp;&nbsp;&nbsp; ↗ zestlink.io/go/team-dashboard &nbsp;&nbsp;&nbsp;&nbsp;
+                ↗ zestlink.io/go/product-launch &nbsp;&nbsp;&nbsp;&nbsp; ↗ zestlink.io/go/campaign-q4 &nbsp;&nbsp;&nbsp;&nbsp; ↗ zestlink.io/go/team-dashboard
               </div>
             </div>
           </>

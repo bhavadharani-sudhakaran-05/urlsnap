@@ -25,7 +25,7 @@ export default function Navbar({ onMenuClick }) {
     (location.pathname.startsWith('/edit')
       ? { label: 'Edit URL', sub: 'Update link settings' }
       : null) ||
-    { label: 'LinkSnap', sub: '' };
+    { label: 'Zestlink', sub: '' };
 
   const handleLogout = () => {
     logout();

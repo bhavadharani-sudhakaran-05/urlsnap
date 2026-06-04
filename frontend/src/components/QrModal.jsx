@@ -23,7 +23,7 @@ export default function QRModal({ isOpen, onClose, url, onGenerateQR }) {
   const handleDownload = () => {
     if (!url.qrCode) return;
     const link = document.createElement('a');
-    link.download = `linksnap-qr-${url.shortCode}.png`;
+    link.download = `zestlink-qr-${url.shortCode}.png`;
     link.href = url.qrCode;
     link.click();
   };
@@ -53,7 +53,7 @@ export default function QRModal({ isOpen, onClose, url, onGenerateQR }) {
 
             <div style={{ margin: '24px 0', display: 'flex', justifyContent: 'center' }}>
               <div style={{ fontFamily: "'DM Mono', monospace", fontSize: '14px', color: 'var(--coral, #E8553E)', background: 'rgba(232,85,62,0.06)', borderRadius: '10px', padding: '10px 16px', display: 'inline-block' }}>
-                linksnap.io/{url.shortCode}
+                zestlink.io/{url.shortCode}
               </div>
             </div>
 

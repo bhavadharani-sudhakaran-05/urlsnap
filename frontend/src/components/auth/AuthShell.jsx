@@ -63,7 +63,7 @@ export default function AuthShell({ title, subtitle, footer, children }) {
           </ul>
         </div>
 
-        <p className="relative z-10 text-xs text-slate-500">© 2026 LinkSnap · URL Shortener & Analytics</p>
+        <p className="relative z-10 text-xs text-slate-500">© 2026 Zestlink · URL Shortener & Analytics</p>
       </aside>
 
       {/* Right panel — form */}

@@ -27,7 +27,7 @@ export default function AuthLayout({ title, subtitle, children, footer }) {
               <Zap className="h-7 w-7 text-white" />
             </div>
             <div>
-              <span className="text-2xl font-bold tracking-tight text-white">LinkSnap</span>
+              <span className="text-2xl font-bold tracking-tight text-white">Zestlink</span>
               <p className="text-[10px] font-semibold uppercase tracking-widest text-indigo-300/70">URL Analytics</p>
             </div>
           </motion.div>
@@ -68,7 +68,7 @@ export default function AuthLayout({ title, subtitle, children, footer }) {
           </ul>
         </div>
 
-        <p className="relative z-10 text-xs text-white/30">© 2026 LinkSnap · Secure & fast</p>
+        <p className="relative z-10 text-xs text-white/30">© 2026 Zestlink · Secure & fast</p>
       </div>
 
       <div className="auth-form-wrap relative flex items-center justify-center bg-slate-50/80 dark:bg-slate-950/80 backdrop-blur-sm">
@@ -83,7 +83,7 @@ export default function AuthLayout({ title, subtitle, children, footer }) {
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500">
                 <Zap className="h-5 w-5 text-white" />
               </div>
-              <span className="text-lg font-bold text-slate-900 dark:text-white">LinkSnap</span>
+              <span className="text-lg font-bold text-slate-900 dark:text-white">Zestlink</span>
             </Link>
           </div>
 

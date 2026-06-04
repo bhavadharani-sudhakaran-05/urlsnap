@@ -40,7 +40,7 @@ export default function NotFoundPage() {
       </div>
       
       <div className="mt-12 font-sans text-[13px] text-muted-light">
-        © {new Date().getFullYear()} LinkSnap. All rights reserved.
+        © {new Date().getFullYear()} Zestlink. All rights reserved.
       </div>
     </div>
   );

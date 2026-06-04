@@ -202,7 +202,7 @@ export default function CreateUrlModal({ isOpen, onClose, onSuccess }) {
                     <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1, marginTop: '16px' }} exit={{ height: 0, opacity: 0, marginTop: 0 }} style={{ overflow: 'hidden' }}>
                       <div style={{ display: 'flex' }}>
                         <div style={{ display: 'flex', alignItems: 'center', background: 'var(--surface, #FBF2E8)', border: '1.5px solid var(--border, #E5D5BE)', borderRight: 'none', borderRadius: '8px 0 0 8px', padding: '0 12px', fontFamily: "'DM Sans', sans-serif", fontSize: '13px', color: 'var(--muted, #8B7355)' }}>
-                          linksnap.io/
+                          zestlink.io/
                         </div>
                         <div style={{ position: 'relative', flex: 1 }}>
                           <div style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '40px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--muted-light, #C4A882)' }}>

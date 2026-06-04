@@ -53,7 +53,7 @@ export default function PublicStats() {
           to="/login"
           className="text-sm font-medium text-white/70 underline underline-offset-2 hover:text-white transition-colors"
         >
-          Sign in to LinkSnap
+          Sign in to Zestlink
         </Link>
       </div>
     );
@@ -90,7 +90,7 @@ export default function PublicStats() {
         <div className="mb-6 flex justify-center">
           <div className="flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur">
             <span className="text-lg">⚡</span>
-            <span className="text-sm font-bold text-white">LinkSnap</span>
+            <span className="text-sm font-bold text-white">Zestlink</span>
           </div>
         </div>
 
@@ -139,7 +139,7 @@ export default function PublicStats() {
             <p className="text-xs text-slate-400">
               Powered by{' '}
               <Link to="/login" className="font-semibold text-brand-600 hover:text-brand-700 transition-colors">
-                LinkSnap
+                Zestlink
               </Link>
               {' '}· Secure URL shortener
             </p>

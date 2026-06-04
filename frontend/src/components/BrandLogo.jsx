@@ -16,7 +16,7 @@ export default function BrandLogo({ className = '', to = '/', size = 'md', light
         <Link2 className={cn('text-white', s.icon)} strokeWidth={2.5} />
       </div>
       <span className={cn('font-bold tracking-tight', s.text, light ? 'text-white' : 'text-slate-900 dark:text-white')}>
-        LinkSnap
+        Zestlink
       </span>
     </>
   );

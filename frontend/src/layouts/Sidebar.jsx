@@ -51,7 +51,7 @@ export default function Sidebar({ open, onClose }) {
             <Zap className="h-5 w-5 text-white" />
           </div>
           <div className="sidebar-label min-w-0">
-            <span className="block text-base font-bold tracking-tight text-slate-900 dark:text-white">LinkSnap</span>
+            <span className="block text-base font-bold tracking-tight text-slate-900 dark:text-white">Zestlink</span>
             <span className="text-[10px] font-semibold uppercase tracking-widest text-indigo-500">Analytics</span>
           </div>
         </div>

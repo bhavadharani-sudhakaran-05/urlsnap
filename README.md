@@ -1,4 +1,4 @@
-# LinkSnap — Production-Ready MERN URL Shortener with Analytics
+# Zestlink — Production-Ready MERN URL Shortener with Analytics
 
 A full-stack URL shortening platform with JWT authentication, click analytics, QR codes, custom aliases, expiry links, and a modern SaaS dashboard built with React and Tailwind CSS.
 

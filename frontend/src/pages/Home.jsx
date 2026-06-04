@@ -129,7 +129,7 @@ export default function Home() {
               <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" />
             </svg>
           </div>
-          <span className="text-lg font-bold tracking-tight text-white">LinkSnap</span>
+          <span className="text-lg font-bold tracking-tight text-white">Zestlink</span>
         </Link>
         
         <div className="hidden items-center gap-8 md:flex">
@@ -165,7 +165,7 @@ export default function Home() {
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-coral opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-coral"></span>
               </span>
-              LinkSnap Enterprise is now generally available
+              Zestlink Enterprise is now generally available
               <svg className="w-3 h-3 text-coral/70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7"/></svg>
             </a>
           </motion.div>
@@ -181,7 +181,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2, duration: 0.6 }}
             className="mt-6 max-w-2xl text-lg md:text-xl leading-relaxed text-zinc-400 font-medium"
           >
-            Secure, scalable, and ridiculously fast. LinkSnap provides the APIs and dashboard you need to manage branded links at scale.
+            Secure, scalable, and ridiculously fast. Zestlink provides the APIs and dashboard you need to manage branded links at scale.
           </motion.p>
 
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3, duration: 0.6 }} className="mt-10 flex flex-col items-center gap-4 sm:flex-row">
@@ -220,7 +220,7 @@ export default function Home() {
                 </div>
                 <div className="mx-auto flex h-7 items-center justify-center rounded-md bg-zinc-900 px-3 text-[12px] font-mono text-zinc-500 border border-zinc-800">
                   <svg className="w-3 h-3 mr-2 opacity-60" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" /></svg>
-                  app.linksnap.com
+                  app.zestlink.com
                 </div>
                 <div className="w-10"></div> {/* Spacer for alignment */}
               </div>
@@ -345,7 +345,7 @@ export default function Home() {
                 <div className="flex h-6 w-6 items-center justify-center rounded bg-coral text-white shadow-sm">
                   <svg className="h-3 w-3" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z" /></svg>
                 </div>
-                <span className="text-sm font-bold tracking-tight text-white">LinkSnap</span>
+                <span className="text-sm font-bold tracking-tight text-white">Zestlink</span>
               </Link>
               <p className="text-sm text-zinc-500 max-w-xs">The robust URL infrastructure designed for modern engineering and marketing teams.</p>
             </div>
@@ -368,7 +368,7 @@ export default function Home() {
           </div>
           
           <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-xs text-zinc-600">© 2026 LinkSnap Inc. All rights reserved.</p>
+            <p className="text-xs text-zinc-600">© 2026 Zestlink Inc. All rights reserved.</p>
             <div className="flex items-center gap-6">
               {['Privacy Policy', 'Terms of Service', 'Cookie Settings'].map(l => (
                 <a key={l} href="#" className="text-xs text-zinc-600 hover:text-zinc-400 transition-colors">{l}</a>
