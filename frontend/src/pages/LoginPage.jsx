@@ -78,7 +78,7 @@ export default function LoginPage() {
     } catch (err) {
       setLoading(false);
       setShake((prev) => prev + 1);
-      const msg = err.response?.data?.error || err.message || 'Invalid credentials. Please try again.';
+      const msg = err.response?.data?.message || err.response?.data?.error || err.message || 'Invalid credentials. Please try again.';
       setErrors((prev) => ({ ...prev, general: msg }));
     }
   };

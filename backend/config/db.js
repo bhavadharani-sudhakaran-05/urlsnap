@@ -1,4 +1,11 @@
 import mongoose from 'mongoose';
+import dns from 'dns';
+
+// Ensure Node uses Google DNS for SRV lookups (prevents UDP block issues)
+dns.setServers(['8.8.8.8']);
+
+// Use native Promise
+mongoose.Promise = globalThis.Promise;
 
 let memoryServer = null;
 
@@ -19,7 +26,11 @@ export const connectDB = async () => {
   }
 
   const connect = async (connectionUri) => {
-    await mongoose.connect(connectionUri, { maxPoolSize: 10 });
+    const options = {
+      serverSelectionTimeoutMS: 10000,
+      socketTimeoutMS: 45000,
+    };
+    await mongoose.connect(connectionUri, options);
     console.log(`MongoDB connected: ${mongoose.connection.host}`);
   };
 
