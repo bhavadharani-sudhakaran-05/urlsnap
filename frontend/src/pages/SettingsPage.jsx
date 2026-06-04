@@ -29,27 +29,17 @@ export default function SettingsPage() {
     
     setLoading(true);
     try {
-      // Assuming api.updateProfile exists, or just mock it for UI
-      if (api.updateProfile) {
-        const data = await api.updateProfile({ name });
-        // Ideally update user in context. We might only have login/register there, but we can simulate it:
-        const updatedUser = { ...user, name };
-        localStorage.setItem('user', JSON.stringify(updatedUser));
-        toast.success('Profile updated successfully!');
-        window.location.reload(); // Simple way to refresh context if no update function exists
-      } else {
-        toast.success('Profile updated! (Mock)');
-        setIsEditing(false);
-      }
+      const data = await api.updateProfile({ name });
+      const updatedUser = { ...user, name: data.user?.name || name };
+      localStorage.setItem('user', JSON.stringify(updatedUser));
+      toast.success('Profile updated successfully!');
+      setIsEditing(false);
     } catch (err) {
-      toast.error('Failed to update profile');
+      const msg = err.response?.data?.message || 'Failed to update profile';
+      toast.error(msg);
     } finally {
       setLoading(false);
     }
-  };
-
-  const handleChangePhoto = () => {
-    toast.error('Photo upload coming soon!', { icon: '📸' });
   };
 
   const handleDeleteAccount = () => {
@@ -110,12 +100,6 @@ export default function SettingsPage() {
                       <div className="w-[72px] h-[72px] rounded-full bg-gradient-to-br from-coral to-amber flex items-center justify-center text-white font-display text-[28px] font-bold shadow-md">
                         {name.charAt(0)?.toUpperCase() || 'U'}
                       </div>
-                      <button 
-                        onClick={handleChangePhoto}
-                        className="bg-transparent border-none text-coral font-sans text-[13px] font-semibold cursor-pointer hover:underline"
-                      >
-                        Change Photo
-                      </button>
                     </div>
 
                     <div className="flex-1 flex flex-col gap-4">

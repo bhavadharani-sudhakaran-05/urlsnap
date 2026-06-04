@@ -62,6 +62,27 @@ export const getProfile = async (req, res) => {
   });
 };
 
+export const updateProfile = async (req, res, next) => {
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      { name: req.body.name },
+      { new: true, runValidators: true }
+    );
+    res.json({
+      success: true,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        createdAt: user.createdAt,
+      },
+    });
+  } catch (err) {
+    next(err);
+  }
+};
+
 export const forgotPassword = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
@@ -84,6 +105,8 @@ export const forgotPassword = async (req, res, next) => {
         user: process.env.SMTP_USER,
         pass: process.env.SMTP_PASS,
       },
+      connectionTimeout: 10000,
+      socketTimeout: 10000,
     });
 
     // Send reset email

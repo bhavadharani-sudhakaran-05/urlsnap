@@ -6,7 +6,7 @@ import { useToast } from '../context/ToastContext';
 import { getApiError } from '../utils/getApiError';
 
 export default function Register() {
-  const [form, setForm] = useState({ username: '', email: '', password: '' });
+  const [form, setForm] = useState({ username: '', email: '', password: '' }); // username will be sent as name
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { register } = useAuth();
@@ -17,11 +17,13 @@ export default function Register() {
     e.preventDefault();
     setLoading(true);
     try {
-      await register(form);
+      const payload = { name: form.username, email: form.email, password: form.password };
+      await register(payload);
       showToast('Account created successfully');
       navigate('/dashboard');
     } catch (err) {
-      showToast(getApiError(err, 'Registration failed'), 'error');
+      const msg = getApiError(err, 'Registration failed');
+      showToast(msg, 'error');
     } finally {
       setLoading(false);
     }

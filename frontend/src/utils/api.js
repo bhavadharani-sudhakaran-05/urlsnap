@@ -142,7 +142,8 @@ export const getGlobalAnalytics = async (period) => {
 };
 
 export const updateProfile = async (userData) => {
-  return { data: userData };
+  const { data } = await api.put('/auth/profile', userData);
+  return data;
 };
 
 export default api;

@@ -120,7 +120,8 @@ export default function SignupPage() {
     setLoading(true);
     try {
       if (signup) {
-        await signup(formData);
+        const payload = { name: formData.name, email: formData.email, password: formData.password };
+        await signup(payload);
       } else {
         throw new Error("Signup function not found in AuthContext. Please implement auth.signup");
       }

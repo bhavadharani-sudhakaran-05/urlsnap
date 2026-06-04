@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { body } from 'express-validator';
-import { register, login, getProfile, forgotPassword, resetPassword } from '../controllers/authController.js';
+import { register, login, getProfile, updateProfile, forgotPassword, resetPassword } from '../controllers/authController.js';
 import { protect } from '../middleware/auth.js';
 import { validate } from '../middleware/validate.js';
 
@@ -28,6 +28,14 @@ router.post(
 );
 
 router.get('/profile', protect, getProfile);
+
+router.put(
+  '/profile',
+  protect,
+  [body('name').trim().notEmpty().withMessage('Name is required')],
+  validate,
+  updateProfile
+);
 
 router.post(
   '/forgot-password',
