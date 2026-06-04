@@ -8,7 +8,7 @@ A full-stack URL shortening platform with JWT authentication, click analytics, Q
 
 ## 1. Project Overview
 
-**LinkForge** lets users register, shorten URLs, track detailed visit analytics (browser, device, geo, daily trends), generate QR codes, and manage links from a responsive dashboard. The backend is a secure Express REST API; data is stored in MongoDB via Mongoose.
+**** lets users register, shorten URLs, track detailed visit analytics (browser, device, geo, daily trends), generate QR codes, and manage links from a responsive dashboard. The backend is a secure Express REST API; data is stored in MongoDB via Mongoose.
 
 ---
 
