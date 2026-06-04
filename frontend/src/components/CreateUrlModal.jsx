@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link2, X, Globe, Tag, AtSign, CalendarClock, QrCode } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { API_BASE_URL } from '../config/api';
 
 export default function CreateUrlModal({ isOpen, onClose, onSuccess }) {
   const [formData, setFormData] = useState({
@@ -81,7 +82,7 @@ export default function CreateUrlModal({ isOpen, onClose, onSuccess }) {
       if (formData.useCustomAlias && formData.customAlias) payload.customAlias = formData.customAlias;
       if (formData.useExpiry && formData.expiresAt) payload.expiresAt = formData.expiresAt;
       
-      const res = await fetch('/api/url/create', {
+      const res = await fetch(`${API_BASE_URL}/url/create`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` },
         body: JSON.stringify(payload)
@@ -91,7 +92,7 @@ export default function CreateUrlModal({ isOpen, onClose, onSuccess }) {
       const created = data.data;
       
       if (formData.generateQr) {
-        await fetch(`/api/url/${created._id}/qr`, {
+        await fetch(`${API_BASE_URL}/url/${created._id}/qr`, {
           method: 'POST',
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });

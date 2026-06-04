@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Layers, X, Upload, FileText, Download, CheckCheck, AlertCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { API_BASE_URL } from '../config/api';
 
 export default function BulkUploadModal({ isOpen, onClose, onSuccess }) {
   const [tab, setTab] = useState('csv'); // 'csv' or 'paste'
@@ -82,7 +83,7 @@ export default function BulkUploadModal({ isOpen, onClose, onSuccess }) {
         if (item.title) payload.title = item.title;
         if (item.customAlias) payload.customAlias = item.customAlias;
         
-        const res = await fetch('/api/urls', {
+        const res = await fetch(`${API_BASE_URL}/url/create`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` },
           body: JSON.stringify(payload)

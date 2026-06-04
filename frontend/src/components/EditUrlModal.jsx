@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Pencil, X, Globe, Tag, CalendarClock, AlertTriangle } from 'lucide-react';
 import toast from 'react-hot-toast';
+import { API_BASE_URL } from '../config/api';
 
 export default function EditUrlModal({ isOpen, onClose, onSuccess, url }) {
   const [formData, setFormData] = useState({
@@ -55,7 +56,7 @@ export default function EditUrlModal({ isOpen, onClose, onSuccess, url }) {
       if (formData.useExpiry && formData.expiresAt) payload.expiresAt = formData.expiresAt;
       else payload.expiresAt = null;
       
-      const res = await fetch(`/api/urls/${url._id}`, {
+      const res = await fetch(`${API_BASE_URL}/url/${url._id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${localStorage.getItem('token')}` },
         body: JSON.stringify(payload)
