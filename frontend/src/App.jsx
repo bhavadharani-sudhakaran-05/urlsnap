@@ -10,6 +10,7 @@ import SignupPage from './pages/SignupPage';
 import DashboardPage from './pages/DashboardPage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import SettingsPage from './pages/SettingsPage';
+import QRGeneratorPage from './pages/QRGeneratorPage';
 import NotFoundPage from './pages/NotFoundPage';
 import ExpiredPage from './pages/ExpiredPage';
 
@@ -87,8 +88,11 @@ export default function App() {
         }
       />
 
+      {/* QR Generator Route */}
+      <Route path="/qr-generator" element={<ProtectedRoute><QRGeneratorPage /></ProtectedRoute>} />
       {/* 404 Route */}
       <Route path="*" element={<NotFoundPage />} />
+      
     </Routes>
   );
 }

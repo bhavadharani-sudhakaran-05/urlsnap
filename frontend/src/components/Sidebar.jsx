@@ -34,7 +34,7 @@ export default function Sidebar({ isOpen, onClose }) {
   ];
 
   const navItemsTools = [
-    { label: 'QR Codes', icon: QrCode, path: '/dashboard?tab=qr' },
+    { label: 'QR Codes', icon: QrCode, path: '/qr-generator' },
     { label: 'Bulk Upload', icon: Upload, action: 'bulk' },
     { label: 'Settings', icon: Settings, path: '/settings' },
   ];

@@ -2,5 +2,8 @@
   "rewrites": [
     { "source": "/:shortCode", "destination": "https://urlsnap-pydi.onrender.com/:shortCode" },
     { "source": "/(.*)", "destination": "/index.html" }
-  ]
+  ],
+  "env": {
+    "VITE_API_URL": "https://urlsnap-pydi.onrender.com/api"
+  }
 }
