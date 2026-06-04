@@ -20,6 +20,7 @@ app.set('trust proxy', 1);
 
 app.use(helmet({ contentSecurityPolicy: false }));
 const allowedOrigins = [
+  'https://urlsnap-sage.vercel.app',
   process.env.CLIENT_URL,
   'http://localhost:5173',
   'http://localhost:5174',
@@ -29,10 +30,12 @@ const allowedOrigins = [
 
 app.use(
   cors({
-    origin:
-      process.env.NODE_ENV === 'production'
-        ? process.env.CLIENT_URL || 'http://localhost:5173'
-        : allowedOrigins,
+    origin: (origin, callback) => {
+      // allow requests with no origin (curl, mobile apps)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) return callback(null, true);
+      return callback(new Error(`CORS: origin ${origin} not allowed`));
+    },
     credentials: true,
   })
 );

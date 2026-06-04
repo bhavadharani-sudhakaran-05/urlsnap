@@ -5,7 +5,11 @@ import { generateQrCode } from './qrService.js';
 
 const RESERVED_CODES = new Set(['api', 'auth', 'login', 'register', 'dashboard', 'public']);
 
-const getBaseUrl = () => process.env.BASE_URL || `http://localhost:${process.env.PORT || 5000}`;
+const getBaseUrl = () => {
+  if (process.env.BASE_URL) return process.env.BASE_URL;
+  if (process.env.NODE_ENV === 'production') return 'https://urlsnap-pydi.onrender.com';
+  return `http://localhost:${process.env.PORT || 5000}`;
+};
 
 export const buildShortUrl = (shortCode) => `${getBaseUrl()}/${shortCode}`;
 
