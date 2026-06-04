@@ -125,7 +125,7 @@ export default function SignupPage() {
         throw new Error("Signup function not found in AuthContext. Please implement auth.signup");
       }
       setSuccess(true);
-      toast.success("Account created! Let's snap some links 🔗", {
+      toast.success("Account created! Welcome to Zestlink 🔗", {
         style: { fontFamily: "'DM Sans', sans-serif" }
       });
       setTimeout(() => {
@@ -223,8 +223,8 @@ export default function SignupPage() {
 
         <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: isMobile ? 'center' : 'flex-start', width: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '2px' }}>
-            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: '32px', color: 'var(--white, #FFFFFF)' }}>Link</span>
-            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: '32px', color: 'var(--coral, #E8553E)' }}>Snap</span>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: '32px', color: 'var(--white, #FFFFFF)' }}>Zest</span>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: '32px', color: 'var(--coral, #E8553E)' }}>link</span>
           </div>
           <div style={{ fontSize: '11px', letterSpacing: '3px', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', marginTop: '6px' }}>
             URL Intelligence Platform

@@ -9,7 +9,7 @@ export default function NotFoundPage() {
       <div className="absolute top-8 left-8">
         <Link to="/" className="no-underline">
           <div className="font-display text-[22px] font-black tracking-tight text-ink">
-            Link<span className="text-coral">Snap</span>.
+            Zest<span className="text-coral">link</span>.
           </div>
         </Link>
       </div>

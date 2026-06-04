@@ -28,7 +28,7 @@ export default function ExpiredPage() {
       </div>
       
       <div className="mt-12 font-sans text-[13px] text-muted-light">
-        Powered by <span className="font-display font-bold text-ink">Link<span className="text-coral">Snap</span>.</span>
+        Powered by <span className="font-display font-bold text-ink">Zest<span className="text-coral">link</span>.</span>
       </div>
     </div>
   );

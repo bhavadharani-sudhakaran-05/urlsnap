@@ -109,8 +109,8 @@ export default function Sidebar({ isOpen, onClose }) {
           <div className="pt-7 px-6 pb-5 border-b border-white/5">
             <div className="flex items-center gap-1">
               <div className="font-display text-[26px] font-black leading-none flex items-center">
-                <span className="text-white/95">Link</span>
-                <span className="text-coral">Snap</span>
+                <span className="text-white/95">Zest</span>
+                <span className="text-coral">link</span>
               </div>
               <Zap size={14} className="text-coral ml-1" />
             </div>
@@ -187,8 +187,8 @@ export function MobileTopBar({ onMenuClick }) {
           <Menu size={24} />
         </button>
         <div className="font-display text-[20px] font-black leading-none flex items-center">
-          <span className="text-ink">Link</span>
-          <span className="text-coral">Snap</span>
+          <span className="text-ink">Zest</span>
+          <span className="text-coral">link</span>
         </div>
       </div>
       <div className="flex items-center gap-3">

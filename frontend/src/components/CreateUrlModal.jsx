@@ -98,7 +98,7 @@ export default function CreateUrlModal({ isOpen, onClose, onSuccess }) {
         });
       }
 
-      toast.success("Link snapped! 🎉", { style: { fontFamily: "'DM Sans', sans-serif" } });
+      toast.success("Link created! 🎉", { style: { fontFamily: "'DM Sans', sans-serif" } });
       onSuccess && onSuccess(created);
       onClose();
     } catch (err) {
@@ -148,7 +148,7 @@ export default function CreateUrlModal({ isOpen, onClose, onSuccess }) {
                 <Link2 size={24} />
               </div>
               <div>
-                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '26px', fontWeight: 800, color: 'var(--ink, #1C1612)', margin: 0 }}>Snap a New Link</h2>
+                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '26px', fontWeight: 800, color: 'var(--ink, #1C1612)', margin: 0 }}>Create a New Link</h2>
                 <p style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '13px', color: 'var(--muted, #8B7355)', margin: '4px 0 0 0' }}>Shorten, customize, and track.</p>
               </div>
             </div>
@@ -272,9 +272,9 @@ export default function CreateUrlModal({ isOpen, onClose, onSuccess }) {
 
               <button type="submit" disabled={loading} style={{ width: '100%', backgroundColor: 'var(--coral, #E8553E)', color: 'white', padding: '14px', border: 'none', borderRadius: '10px', fontFamily: "'DM Sans', sans-serif", fontSize: '14px', fontWeight: 700, cursor: loading ? 'not-allowed' : 'pointer', opacity: loading ? 0.85 : 1, transition: 'all 0.2s', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', boxShadow: '0 8px 24px rgba(232,85,62,0.28)' }}>
                 {loading ? (
-                  <><div style={{ width: '16px', height: '16px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} /><style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>Snapping...</>
+                  <><div style={{ width: '16px', height: '16px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} /><style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>Creating...</>
                 ) : (
-                  "Snap This Link →"
+                  "Shorten This Link →"
                 )}
               </button>
               

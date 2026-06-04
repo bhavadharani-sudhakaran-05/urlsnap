@@ -165,8 +165,8 @@ export default function LoginPage() {
 
         <div style={{ position: 'relative', zIndex: 10, display: 'flex', flexDirection: 'column', alignItems: isMobile ? 'center' : 'flex-start', width: '100%' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '2px' }}>
-            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: '32px', color: 'var(--white, #FFFFFF)' }}>Link</span>
-            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: '32px', color: 'var(--coral, #E8553E)' }}>Snap</span>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: '32px', color: 'var(--white, #FFFFFF)' }}>Zest</span>
+            <span style={{ fontFamily: "'Playfair Display', serif", fontWeight: 900, fontSize: '32px', color: 'var(--coral, #E8553E)' }}>link</span>
           </div>
           <div style={{ fontSize: '11px', letterSpacing: '3px', color: 'rgba(255,255,255,0.35)', textTransform: 'uppercase', marginTop: '6px' }}>
             URL Intelligence Platform

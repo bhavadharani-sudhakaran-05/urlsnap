@@ -284,7 +284,7 @@ export default function BulkUploadModal({ isOpen, onClose, onSuccess }) {
                 {loading ? (
                   <><div style={{ width: '16px', height: '16px', border: '2px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} /><style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>Creating... {progress}/{validItemsCount}</>
                 ) : (
-                  `Snap ${validItemsCount} Links →`
+                  `Shorten ${validItemsCount} Links →`
                 )}
               </button>
             )}
