@@ -122,50 +122,18 @@ export default function AnalyticsPage() {
     setError(null);
     try {
       const res = await getAnalytics(id);
-      let fetched = res.data.data;
-      if (!fetched?.shortUrl) {
-        // Fallback dummy data for premium UI preview
-        const today = new Date();
-        const dailyClicks = Array.from({ length: 30 }, (_, i) => ({
-          date: new Date(today.getTime() - (29 - i) * 86400000).toISOString().split('T')[0],
-          count: Math.floor(Math.random() * 50) + 10,
-          visitors: Math.floor(Math.random() * 30) + 5,
-        }));
-        fetched = {
-          shortUrl: { originalUrl: 'https://example.com/very/long/url/path/to/something/awesome', shortCode: id, createdAt: new Date(Date.now() - 30 * 86400000).toISOString() },
-          totalClicks: dailyClicks.reduce((s, d) => s + d.count, 0),
-          lastVisit: new Date().toISOString(),
-          dailyClicks,
-          recentVisits: Array.from({ length: 15 }, (_, i) => ({
-            timestamp: new Date(today.getTime() - i * 3600000).toISOString(),
-            browser: ['Chrome', 'Safari', 'Firefox', 'Edge'][Math.floor(Math.random() * 4)],
-            device: ['Desktop', 'Mobile', 'Tablet'][Math.floor(Math.random() * 3)],
-            os: ['Windows', 'macOS', 'iOS', 'Android'][Math.floor(Math.random() * 4)],
-            country: ['United States', 'India', 'United Kingdom', 'Germany', 'Canada'][Math.floor(Math.random() * 5)],
-            city: 'Sample City',
-            referrer: ['Direct', 'Google', 'Twitter', 'LinkedIn'][Math.floor(Math.random() * 4)]
-          })),
-          browserAnalytics: [
-            { name: 'Chrome', count: 450 }, { name: 'Safari', count: 320 }, { name: 'Firefox', count: 120 }, { name: 'Edge', count: 80 }
-          ],
-          deviceAnalytics: [
-            { name: 'Mobile', count: 550 }, { name: 'Desktop', count: 380 }, { name: 'Tablet', count: 40 }
-          ],
-          osAnalytics: [
-            { name: 'iOS', count: 420 }, { name: 'Windows', count: 310 }, { name: 'Android', count: 150 }, { name: 'macOS', count: 90 }
-          ],
-          countryAnalytics: [
-            { name: 'United States', count: 450 }, { name: 'India', count: 320 }, { name: 'United Kingdom', count: 180 }, { name: 'Germany', count: 90 }
-          ],
-          referrerAnalytics: [
-            { name: 'Direct', count: 400 }, { name: 'Google', count: 350 }, { name: 'Twitter', count: 150 }, { name: 'LinkedIn', count: 70 }
-          ]
-        };
-      }
-      // Inject some mock premium stats if missing
-      fetched.qrScans = fetched.qrScans || Math.floor(fetched.totalClicks * 0.15);
-      fetched.conversionRate = fetched.conversionRate || 12.4;
-      fetched.uniqueVisitors = fetched.uniqueVisitors || Math.floor(fetched.totalClicks * 0.65);
+      let fetched = res.analytics || {};
+      
+      // Default missing stats to 0 instead of mocking
+      fetched.qrScans = fetched.qrScans || 0;
+      fetched.conversionRate = fetched.conversionRate || 0;
+      fetched.uniqueVisitors = fetched.uniqueVisitors || 0;
+      fetched.totalClicks = fetched.totalClicks || 0;
+      fetched.dailyClicks = fetched.dailyClicks || [];
+      fetched.recentVisits = fetched.recentVisits || [];
+      fetched.countryAnalytics = fetched.countryAnalytics || [];
+      fetched.deviceAnalytics = fetched.deviceAnalytics || [];
+      fetched.browserAnalytics = fetched.browserAnalytics || [];
       
       setData(fetched);
     } catch (err) {

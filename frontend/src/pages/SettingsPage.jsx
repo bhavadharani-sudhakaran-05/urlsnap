@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { User, BarChart2, AlertTriangle, Download, X, Check } from 'lucide-react';
 import { format } from 'date-fns';
 import toast from 'react-hot-toast';
@@ -13,13 +13,28 @@ export default function SettingsPage() {
   const [name, setName] = useState(user?.name || '');
   const [loading, setLoading] = useState(false);
 
-  // Mock stats
-  const stats = {
-    totalLinks: 42,
-    totalClicks: 12480,
+  const [stats, setStats] = useState({
+    totalLinks: 0,
+    totalClicks: 0,
     memberSince: user?.createdAt ? new Date(user.createdAt) : new Date(Date.now() - 90 * 24 * 60 * 60 * 1000),
     lastActive: new Date()
-  };
+  });
+
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const data = await api.getOverview();
+        setStats(prev => ({
+          ...prev,
+          totalLinks: data.totalLinks || 0,
+          totalClicks: data.totalClicks || 0,
+        }));
+      } catch (error) {
+        console.error('Failed to fetch stats', error);
+      }
+    };
+    fetchStats();
+  }, []);
 
   const handleSave = async () => {
     if (!name.trim()) {
