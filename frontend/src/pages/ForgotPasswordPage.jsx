@@ -254,9 +254,6 @@ export default function ForgotPasswordPage() {
                 We've sent password reset instructions to<br />
                 <strong style={{ color: 'var(--ink, #1C1612)' }}>{email}</strong>
               </p>
-              <p style={{ fontSize: '13px', color: 'var(--muted-light, #C4A882)', fontStyle: 'italic' }}>
-                Note: Since this is a demo, please check your server console for the actual reset link.
-              </p>
             </motion.div>
           )}
 

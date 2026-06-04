@@ -56,7 +56,7 @@ export default function QRGeneratorPage() {
   }, [options, downloadQR, copyToClipboard, updateOption]);
 
   return (
-    <div className="page-container" style={{ padding: '36px 40px 0', maxWidth: '1200px', margin: '0 auto' }}>
+    <div className="page-container" style={{ padding: '36px 40px 0', maxWidth: '1000px', margin: '0 auto' }}>
       {/* Header */}
       <div className="header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '24px' }}>
         <div>
@@ -67,14 +67,6 @@ export default function QRGeneratorPage() {
           <p style={{ fontFamily: 'DM Sans', fontSize: '14px', color: 'var(--muted)' }}>
             Generate, customize, and download QR codes for any content type. Every short link gets its own QR automatically.
           </p>
-        </div>
-        <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <div className="stat-pill" style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '999px', padding: '4px 12px', fontFamily: 'DM Sans', fontSize: '12px', color: 'var(--muted)' }}>
-            🔳 12 QR codes created
-          </div>
-          <div className="stat-pill" style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '999px', padding: '4px 12px', fontFamily: 'DM Sans', fontSize: '12px', color: 'var(--muted)' }}>
-            ⬇ 847 total downloads
-          </div>
         </div>
       </div>
 

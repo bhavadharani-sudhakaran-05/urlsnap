@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { QR_TEMPLATES, getTemplateByName } from '../utils/qrTemplates';
+import { getUrls } from '../utils/api';
 
 // Helper components for inputs
 const InputGroup = ({ label, children }) => (
@@ -47,10 +48,12 @@ export default function QRCustomizer({ activeTab, options, updateOption, updateM
   // Load user's short links for the URL tab dropdown
   useEffect(() => {
     if (activeTab !== 'url') return;
-    fetch('/api/urls')
-      .then(res => res.json())
-      .then(data => setShortLinks(data.urls || []))
-      .catch(() => setShortLinks([]));
+    getUrls().then(data => {
+      const urls = data.urls || [];
+      // Remove duplicates based on originalUrl
+      const uniqueUrls = urls.filter((v, i, a) => a.findIndex(t => (t.originalUrl === v.originalUrl)) === i);
+      setShortLinks(uniqueUrls);
+    }).catch(() => setShortLinks([]));
   }, [activeTab]);
 
   // Handle logo drop/upload
