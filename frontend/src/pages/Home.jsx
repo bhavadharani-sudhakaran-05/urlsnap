@@ -138,8 +138,8 @@ export default function Home() {
               Product <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div className="absolute top-full left-0 hidden group-hover:flex flex-col bg-[#0A0A0A] border border-zinc-800 rounded-lg p-2 min-w-[150px] shadow-xl">
-              {['Features', 'Analytics', 'API', 'Pricing'].map(l => (
-                <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 px-3 py-2 rounded-md transition-colors">{l}</a>
+              {['Features', 'Analytics', 'API'].map(l => (
+                <Link key={l} to={`/${l.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 px-3 py-2 rounded-md transition-colors">{l}</Link>
               ))}
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function Home() {
             </button>
             <div className="absolute top-full left-0 hidden group-hover:flex flex-col bg-[#0A0A0A] border border-zinc-800 rounded-lg p-2 min-w-[150px] shadow-xl">
               {['About', 'Blog', 'Careers', 'Contact'].map(l => (
-                <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 px-3 py-2 rounded-md transition-colors">{l}</a>
+                <Link key={l} to={`/${l.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 px-3 py-2 rounded-md transition-colors">{l}</Link>
               ))}
             </div>
           </div>
@@ -277,8 +277,8 @@ export default function Home() {
             <div>
               <h4 className="text-sm font-semibold text-white mb-4">Product</h4>
               <ul className="space-y-3">
-                {['Features', 'Analytics', 'API', 'Pricing'].map(l => (
-                  <li key={l}><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">{l}</a></li>
+                {['Features', 'Analytics', 'API'].map(l => (
+                  <li key={l}><Link to={`/${l.toLowerCase()}`} className="text-sm text-zinc-500 hover:text-white transition-colors">{l}</Link></li>
                 ))}
               </ul>
             </div>
@@ -286,7 +286,7 @@ export default function Home() {
               <h4 className="text-sm font-semibold text-white mb-4">Company</h4>
               <ul className="space-y-3">
                 {['About', 'Blog', 'Careers', 'Contact'].map(l => (
-                  <li key={l}><a href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">{l}</a></li>
+                  <li key={l}><Link to={`/${l.toLowerCase()}`} className="text-sm text-zinc-500 hover:text-white transition-colors">{l}</Link></li>
                 ))}
               </ul>
             </div>

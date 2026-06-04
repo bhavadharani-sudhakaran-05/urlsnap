@@ -9,6 +9,7 @@ import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 
 // New Pages
+import GenericPage from './pages/GenericPage';
 import DashboardPage from './pages/DashboardPage';
 import AnalyticsPage from './pages/AnalyticsPage';
 import SettingsPage from './pages/SettingsPage';
@@ -65,7 +66,13 @@ export default function App() {
       
       {/* Informational / Public Routes */}
       <Route path="/expired" element={<ExpiredPage />} />
-
+      <Route path="/features" element={<GenericPage title="Features" />} />
+      <Route path="/analytics" element={<GenericPage title="Analytics" />} />
+      <Route path="/api" element={<GenericPage title="API" />} />
+      <Route path="/about" element={<GenericPage title="About Us" />} />
+      <Route path="/blog" element={<GenericPage title="Blog" />} />
+      <Route path="/careers" element={<GenericPage title="Careers" />} />
+      <Route path="/contact" element={<GenericPage title="Contact Us" />} />
       {/* Protected Routes */}
       <Route
         path="/dashboard"
