@@ -16,10 +16,7 @@ export const redirectToOriginal = async (req, res, next) => {
         .send(renderHtml('Link Expired', 'This short link has expired and is no longer available.'));
     }
 
-    const ip =
-      req.headers['x-forwarded-for']?.split(',')[0]?.trim() ||
-      req.socket.remoteAddress ||
-      'unknown';
+    const ip = req.ip || req.socket.remoteAddress || 'unknown';
     const userAgent = req.headers['user-agent'] || '';
 
     await recordVisit(shortUrl, { ip, userAgent });
