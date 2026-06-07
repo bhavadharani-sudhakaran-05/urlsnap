@@ -254,9 +254,9 @@ export default function SignupPage() {
 
             <div style={{ position: 'relative', zIndex: 10, display: 'flex', gap: '12px', alignItems: 'center' }}>
               {[
-                { value: '2.4M+', label: 'Links Created', color: 'var(--coral, #E8553E)' },
-                { value: '98ms', label: 'Avg Redirect', color: 'var(--amber, #F59E0B)' },
-                { value: '99.9%', label: 'Uptime', color: 'var(--white, #FFFFFF)' }
+                { value: 'JWT', label: 'Secure Auth', color: 'var(--coral, #E8553E)' },
+                { value: 'Real-time', label: 'Click Analytics', color: 'var(--amber, #F59E0B)' },
+                { value: 'QR', label: 'Code Generator', color: 'var(--white, #FFFFFF)' }
               ].map((stat, idx) => (
                 <React.Fragment key={idx}>
                   <motion.div
@@ -271,13 +271,6 @@ export default function SignupPage() {
                   {idx < 2 && <div style={{ width: '1px', height: '30px', backgroundColor: 'rgba(255,255,255,0.08)' }} />}
                 </React.Fragment>
               ))}
-            </div>
-
-            <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, overflow: 'hidden', padding: '12px 0', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-              <div className="ticker-content" style={{ fontFamily: "'DM Mono', monospace", fontSize: '11px', color: 'rgba(255,255,255,0.2)' }}>
-                ↗ zestlink.io/go/product-launch &nbsp;&nbsp;&nbsp;&nbsp; ↗ zestlink.io/go/campaign-q4 &nbsp;&nbsp;&nbsp;&nbsp; ↗ zestlink.io/go/team-dashboard &nbsp;&nbsp;&nbsp;&nbsp;
-                ↗ zestlink.io/go/product-launch &nbsp;&nbsp;&nbsp;&nbsp; ↗ zestlink.io/go/campaign-q4 &nbsp;&nbsp;&nbsp;&nbsp; ↗ zestlink.io/go/team-dashboard
-              </div>
             </div>
           </>
         )}
@@ -306,7 +299,7 @@ export default function SignupPage() {
               <span style={{ fontWeight: 900, display: 'block' }}>links for free.</span>
             </h2>
             <p style={{ fontSize: '14px', color: 'var(--muted, #8B7355)', marginTop: '8px', marginBottom: 0 }}>
-              Join thousands of creators and marketers.
+              Create an account to start managing your links.
             </p>
           </div>
 

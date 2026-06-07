@@ -148,7 +148,7 @@ export default function Home() {
               Company <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div className="absolute top-full left-0 hidden group-hover:flex flex-col bg-[#0A0A0A] border border-zinc-800 rounded-lg p-2 min-w-[150px] shadow-xl">
-              {['About', 'Blog', 'Careers', 'Contact'].map(l => (
+              {['About', 'Contact'].map(l => (
                 <a key={l} href={`#${l.toLowerCase()}`} className="text-sm text-zinc-400 hover:text-white hover:bg-zinc-800/50 px-3 py-2 rounded-md transition-colors">{l}</a>
               ))}
             </div>
@@ -268,37 +268,33 @@ export default function Home() {
           <div className="flex flex-col md:flex-row items-center gap-16">
             <div className="flex-1">
               <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white mb-6">Actionable insights,<br />in real time.</h2>
-              <p className="text-lg text-zinc-400 mb-8 max-w-md">Gain profound visibility into your audience. Track clicks, geographic locations, and referring channels the second they happen.</p>
+              <p className="text-lg text-zinc-400 mb-8 max-w-md">Gain visibility into your audience. Track clicks, geographic locations, browsers, and devices the second they happen.</p>
               <div className="grid grid-cols-2 gap-6">
                 <div>
-                  <h4 className="text-3xl font-extrabold text-coral mb-1">99.9%</h4>
-                  <p className="text-sm font-medium text-zinc-500">Uptime SLA</p>
+                  <h4 className="text-3xl font-extrabold text-coral mb-1">Real-time</h4>
+                  <p className="text-sm font-medium text-zinc-500">Click Tracking</p>
                 </div>
                 <div>
-                  <h4 className="text-3xl font-extrabold text-white mb-1">50M+</h4>
-                  <p className="text-sm font-medium text-zinc-500">Links tracked daily</p>
+                  <h4 className="text-3xl font-extrabold text-white mb-1">Geo + Device</h4>
+                  <p className="text-sm font-medium text-zinc-500">Analytics Breakdown</p>
                 </div>
               </div>
             </div>
             <div className="flex-1 w-full">
               <div className="rounded-2xl border border-zinc-800 bg-[#0A0A0A] p-6 shadow-2xl">
                 <div className="flex items-center justify-between mb-6 border-b border-zinc-800 pb-4">
-                  <h5 className="text-sm font-semibold text-white">Live Traffic</h5>
-                  <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                  </span>
+                  <h5 className="text-sm font-semibold text-white">Analytics Dashboard</h5>
                 </div>
                 <div className="space-y-4">
-                  {[...Array(4)].map((_, i) => (
+                  {['Browser Distribution', 'Device Breakdown', 'Country Analytics', 'Daily Click Trends'].map((feature, i) => (
                     <div key={i} className="flex items-center justify-between">
                       <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-xs font-medium text-white">
-                          {['US', 'UK', 'IN', 'AU'][i]}
+                        <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center">
+                          <svg className="w-4 h-4 text-coral" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                         </div>
-                        <div className="w-24 h-2 rounded bg-zinc-800" />
+                        <span className="text-sm text-zinc-400">{feature}</span>
                       </div>
-                      <div className="w-12 h-2 rounded bg-zinc-700" />
+                      <svg className="w-4 h-4 text-zinc-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" /></svg>
                     </div>
                   ))}
                 </div>
@@ -348,61 +344,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Blog Section */}
-      <section id="blog" className="relative z-10 py-32 bg-[#0A0A0A] border-t border-zinc-900">
-        <div className="mx-auto max-w-6xl px-6">
-          <div className="flex items-end justify-between mb-12">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tighter text-white mb-4">Latest Insights</h2>
-              <p className="text-zinc-400">Updates, engineering logs, and product news.</p>
-            </div>
-            <a href="#" className="hidden md:inline-flex items-center text-sm font-medium text-coral hover:text-coral-dark transition-colors">View all posts &rarr;</a>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              { title: "Scaling our analytics engine to 10k RPS", date: "Oct 12, 2026", category: "Engineering" },
-              { title: "Introducing custom domains for all plans", date: "Sep 28, 2026", category: "Product" },
-              { title: "The future of attribution tracking", date: "Sep 15, 2026", category: "Marketing" }
-            ].map(post => (
-              <a key={post.title} href="#" className="group block">
-                <div className="aspect-video w-full rounded-xl bg-zinc-900 border border-zinc-800 mb-4 overflow-hidden relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-zinc-800/50 to-zinc-900/50 group-hover:scale-105 transition-transform duration-500" />
-                  <div className="absolute inset-0 flex items-center justify-center text-zinc-700 font-bold opacity-30">Image Placeholder</div>
-                </div>
-                <p className="text-xs font-semibold text-coral uppercase tracking-wider mb-2">{post.category} &bull; {post.date}</p>
-                <h3 className="text-xl font-bold text-white group-hover:text-zinc-300 transition-colors">{post.title}</h3>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* Careers Section */}
-      <section id="careers" className="relative z-10 py-32 bg-[#050505] border-t border-zinc-900">
-        <div className="mx-auto max-w-4xl px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold tracking-tighter text-white mb-4">Join our mission</h2>
-            <p className="text-lg text-zinc-400">We're always looking for talented individuals to join our fully remote team.</p>
-          </div>
-          <div className="space-y-4">
-            {[
-              { role: "Senior Frontend Engineer", team: "Engineering", location: "Remote (Americas)" },
-              { role: "Backend Systems Engineer", team: "Infrastructure", location: "Remote (Global)" },
-              { role: "Product Marketing Manager", team: "Marketing", location: "Remote (EMEA)" }
-            ].map(job => (
-              <a key={job.role} href="#" className="flex flex-col sm:flex-row sm:items-center justify-between p-6 rounded-xl border border-zinc-800 bg-[#0A0A0A] hover:bg-zinc-900/80 transition-colors group">
-                <div>
-                  <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-coral transition-colors">{job.role}</h3>
-                  <p className="text-sm text-zinc-500">{job.team} &bull; {job.location}</p>
-                </div>
-                <div className="mt-4 sm:mt-0 text-sm font-medium text-white flex items-center gap-2">
-                  Apply <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Contact Section */}
       <section id="contact" className="relative z-10 py-32 bg-[#0A0A0A] border-t border-zinc-900">
@@ -444,7 +386,7 @@ export default function Home() {
             <div>
               <h4 className="text-sm font-semibold text-white mb-4">Company</h4>
               <ul className="space-y-3">
-                {['About', 'Blog', 'Careers', 'Contact'].map(l => (
+                {['About', 'Contact'].map(l => (
                   <li key={l}><a href={`#${l.toLowerCase()}`} className="text-sm text-zinc-500 hover:text-white transition-colors">{l}</a></li>
                 ))}
               </ul>

@@ -41,6 +41,7 @@ export const getAnalytics = async (shortUrlId, userId) => {
   const deviceMap = {};
   const countryMap = {};
   const cityMap = {};
+  const uniqueIps = new Set();
 
   for (const v of visits) {
     const day = new Date(v.timestamp).toISOString().split('T')[0];
@@ -49,6 +50,9 @@ export const getAnalytics = async (shortUrlId, userId) => {
     deviceMap[v.device] = (deviceMap[v.device] || 0) + 1;
     countryMap[v.country] = (countryMap[v.country] || 0) + 1;
     cityMap[v.city] = (cityMap[v.city] || 0) + 1;
+    if (v.ipAddress && v.ipAddress !== 'unknown') {
+      uniqueIps.add(v.ipAddress);
+    }
   }
 
   const toSortedArray = (map) =>
@@ -73,6 +77,7 @@ export const getAnalytics = async (shortUrlId, userId) => {
       expiryDate: shortUrl.expiryDate,
     },
     totalClicks: shortUrl.clickCount,
+    uniqueVisitors: uniqueIps.size,
     lastVisit,
     dailyClicks,
     browserAnalytics: toSortedArray(browserMap),

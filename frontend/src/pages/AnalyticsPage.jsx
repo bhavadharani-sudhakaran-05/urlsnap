@@ -27,13 +27,9 @@ import {
   Smartphone,
   Tablet,
   Share2,
-  Download,
-  QrCode,
   Map as MapIcon,
   Activity,
-  Zap,
-  TrendingUp,
-  Bot
+  TrendingUp
 } from 'lucide-react';
 import QRCode from 'react-qr-code';
 import { getAnalytics } from '../utils/api';
@@ -115,7 +111,6 @@ export default function AnalyticsPage() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [dateRange, setDateRange] = useState('30d'); // 7d, 30d, 90d, all
 
   const fetchAnalytics = async () => {
     setLoading(true);
@@ -124,9 +119,7 @@ export default function AnalyticsPage() {
       const res = await getAnalytics(id);
       let fetched = res.analytics || {};
       
-      // Default missing stats to 0 instead of mocking
-      fetched.qrScans = fetched.qrScans || 0;
-      fetched.conversionRate = fetched.conversionRate || 0;
+      // Default missing fields to safe values
       fetched.uniqueVisitors = fetched.uniqueVisitors || 0;
       fetched.totalClicks = fetched.totalClicks || 0;
       fetched.dailyClicks = fetched.dailyClicks || [];
@@ -163,12 +156,7 @@ export default function AnalyticsPage() {
 
   if (error) return <ErrorState message={error} onRetry={fetchAnalytics} />;
 
-  const shortLinkFull = `${window.location.origin}/${data.shortUrl?.shortCode}`;
 
-  const copyToClipboard = () => {
-    navigator.clipboard.writeText(shortLinkFull);
-    toast.success('Link copied to clipboard!');
-  };
 
   return (
     <AppLayout>
@@ -196,37 +184,15 @@ export default function AnalyticsPage() {
               </h1>
               <p className="mt-2 text-[#8B7355] max-w-2xl truncate">{data.shortUrl?.originalUrl}</p>
             </div>
-            
-            <div className="flex flex-wrap items-center gap-3">
-              <select 
-                value={dateRange}
-                onChange={(e) => setDateRange(e.target.value)}
-                className="bg-[#FBF2E8] border border-[#E5D5BE] rounded-lg px-4 py-2.5 text-sm font-medium text-[#1C1612] focus:outline-none focus:ring-2 focus:ring-indigo-500/50 appearance-none cursor-pointer hover:bg-[#E5D5BE] transition-colors"
-              >
-                <option value="7d">Last 7 Days</option>
-                <option value="30d">Last 30 Days</option>
-                <option value="90d">Last 90 Days</option>
-                <option value="all">All Time</option>
-              </select>
-              
-              <button onClick={copyToClipboard} className="btn-secondary bg-[#FBF2E8] border-[#E5D5BE] text-[#1C1612] hover:bg-[#E5D5BE] flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all">
-                Copy Link
-              </button>
-              
-              <a href={`data:text/json;charset=utf-8,${encodeURIComponent(JSON.stringify(data))}`} download={`analytics-${id}.json`} className="btn-primary bg-[#E8553E] hover:bg-[#E8553E] text-[#1C1612] flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium shadow-lg shadow-[#E8553E]/20 transition-all">
-                <Download className="w-4 h-4" /> Export
-              </a>
-            </div>
           </div>
         </StaggerItem>
 
-        {/* KPI Cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* KPI Cards — Real Data Only */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <MetricCard
             label="Total Clicks"
             numericValue={data.totalClicks}
             icon={MousePointerClick}
-            trend={12}
             colorClass="text-[#E8553E]"
             sparkData={data.dailyClicks}
             delay={1}
@@ -235,55 +201,40 @@ export default function AnalyticsPage() {
             label="Unique Visitors"
             numericValue={data.uniqueVisitors}
             icon={Users}
-            trend={8}
             colorClass="text-[#F59E0B]"
-            sparkData={data.dailyClicks?.map(d => ({ count: d.visitors || Math.floor(d.count * 0.7) }))}
             delay={2}
           />
           <MetricCard
             label="Countries Reached"
             numericValue={data.countryAnalytics?.length || 0}
             icon={Globe}
-            trend={2}
             colorClass="text-cyan-400"
             delay={3}
           />
-          <MetricCard
-            label="QR Scans"
-            numericValue={data.qrScans}
-            icon={QrCode}
-            trend={24}
-            colorClass="text-pink-400"
-            delay={4}
-          />
-          <MetricCard
-            label="Conversion Rate"
-            numericValue={data.conversionRate}
-            suffix="%"
-            icon={Zap}
-            trend={-1}
-            colorClass="text-amber-400"
-            delay={5}
-          />
-          <MetricCard
-            label="Last Visit"
-            numericValue={0} // We will just display the formatted date instead of counter
-            icon={Clock}
-            colorClass="text-[#6B8F6E]"
-            delay={6}
-          />
+          <GlassCard delay={4} className="p-5 group hover:-translate-y-1 transition-transform duration-300">
+            <div className="flex justify-between items-start mb-4">
+              <div>
+                <p className="text-sm font-medium text-[#8B7355]">Last Visit</p>
+                <div className="mt-2 text-lg font-bold text-[#1C1612] font-display">
+                  {data.lastVisit ? formatDateTime(data.lastVisit) : 'No visits yet'}
+                </div>
+              </div>
+              <div className="p-3 rounded-xl bg-[#FBF2E8] border border-[#E5D5BE] text-[#6B8F6E]">
+                <Clock className="w-5 h-5" />
+              </div>
+            </div>
+          </GlassCard>
         </div>
 
         {/* Traffic Chart */}
-        <GlassCard delay={7} className="p-6 lg:p-8">
+        <GlassCard delay={5} className="p-6 lg:p-8">
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
             <div>
               <h2 className="text-xl font-bold text-[#1C1612]">Traffic Overview</h2>
-              <p className="text-sm text-[#8B7355] mt-1">Clicks and unique visitors over time</p>
+              <p className="text-sm text-[#8B7355] mt-1">Daily clicks over time</p>
             </div>
             <div className="flex items-center gap-4 text-sm font-medium">
-              <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-[#E8553E]"></div> Total Clicks</div>
-              <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-[#F59E0B]"></div> Unique Visitors</div>
+              <div className="flex items-center gap-2"><div className="w-3 h-3 rounded-full bg-[#E8553E]"></div> Clicks</div>
             </div>
           </div>
           
@@ -295,17 +246,12 @@ export default function AnalyticsPage() {
                     <stop offset="5%" stopColor="#E8553E" stopOpacity={0.3} />
                     <stop offset="95%" stopColor="#E8553E" stopOpacity={0} />
                   </linearGradient>
-                  <linearGradient id="colorVisitors" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="#F59E0B" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="#F59E0B" stopOpacity={0} />
-                  </linearGradient>
                 </defs>
                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5D5BE" />
                 <XAxis dataKey="date" tick={{ fill: '#8B7355', fontSize: 12 }} axisLine={false} tickLine={false} tickFormatter={(val) => formatDate(val)} />
-                <YAxis tick={{ fill: '#8B7355', fontSize: 12 }} axisLine={false} tickLine={false} />
+                <YAxis tick={{ fill: '#8B7355', fontSize: 12 }} axisLine={false} tickLine={false} allowDecimals={false} />
                 <RechartsTooltip content={<PremiumTooltip />} />
                 <Area type="monotone" dataKey="count" name="Clicks" stroke="#E8553E" strokeWidth={3} fillOpacity={1} fill="url(#colorClicks)" activeDot={{ r: 6, strokeWidth: 0 }} />
-                <Area type="monotone" dataKey="visitors" name="Unique Visitors" stroke="#F59E0B" strokeWidth={3} fillOpacity={1} fill="url(#colorVisitors)" activeDot={{ r: 6, strokeWidth: 0 }} />
               </AreaChart>
             </ResponsiveContainer>
           </div>
